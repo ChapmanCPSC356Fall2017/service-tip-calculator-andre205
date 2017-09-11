@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TylerAndrews_TipCalculator</string>
+    <string name="hello_world">Hello world</string>
+    <string name="go">Go</string>
+    <string name="enter_name_here">Enter name here</string>
+    <string name="tip_amount">Tip amount</string>
+    <string name="bill_amt">How much was the bill?</string>
 </resources>

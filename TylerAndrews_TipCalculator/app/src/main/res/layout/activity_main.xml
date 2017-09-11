@@ -1,11 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tyler.tylerandrews_tipcalculator.MainActivity">
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/tv_hello"
+        android:textSize="25sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tip_amount"
+        />
+
+    <EditText
+        android:id="@+id/et_bill"
+        android:layout_margin="20dp"
+        android:gravity="center_horizontal"
+        android:hint="@string/bill_amt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+
+        />
+
+    <TextView
+        android:id="@+id/tv_rating"
+        android:textSize="25sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rate your service"
+        />
 
 
-</android.support.constraint.ConstraintLayout>
+    <SeekBar
+        android:id="@+id/sb_rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="10"
+        android:min="1"
+
+        />
+
+
+</LinearLayout>
