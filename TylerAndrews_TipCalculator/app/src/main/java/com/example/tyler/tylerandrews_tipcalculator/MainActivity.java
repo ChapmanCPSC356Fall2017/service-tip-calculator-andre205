@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -15,22 +16,26 @@ import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TextView messageTextView;
     private TextView tipTextView;
     private EditText billEditText;
     private SeekBar satisfactionSeekBar;
     private TextView ratingTextView;
 
-    private float tipPercentage = (float) .15;
+    private float tipPercentage = (float) .13;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.tipTextView = (TextView) findViewById(R.id.tv_hello);
+        this.messageTextView = (TextView) findViewById(R.id.tv_message);
+        this.tipTextView = (TextView) findViewById(R.id.tv_tip);
         this.ratingTextView = (TextView) findViewById(R.id.tv_rating);
         this.billEditText = (EditText) findViewById(R.id.et_bill);
         this.satisfactionSeekBar = (SeekBar) findViewById(R.id.sb_rating);
+
+        satisfactionSeekBar.setProgress(5);
 
         satisfactionSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -68,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
                 //get bill text, convert to float
                 String bill = billEditText.getText().toString();
 
+
+
                 try
                 {
 
@@ -77,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                         float tip = bf * tipPercentage;
                         new DecimalFormat("#.##").format(tip);
                         //tipTextView.setText(Float.toString(tip));
-                        tipTextView.setText(new DecimalFormat("#.##").format(tip));
+                        tipTextView.setText("$" + new DecimalFormat("#.##").format(tip));
                     }
                 }
 
@@ -85,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 {
 
                 }
-
 
             }
 
@@ -118,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                         float tip = b * tipPercentage;
                         new DecimalFormat("#.##").format(tip);
                         //tipTextView.setText(Float.toString(tip));
-                        tipTextView.setText(new DecimalFormat("#.##").format(tip));
+                        tipTextView.setText("$" + new DecimalFormat("#.##").format(tip));
                     }
                 }
 
@@ -129,24 +135,22 @@ public class MainActivity extends AppCompatActivity {
 
                 if (charSequence.length() == 0)
                 {
-                    tipTextView.setText("Tip");
+                    tipTextView.setText("");
+                    messageTextView.setText("");
                 }
-
+                else
+                {
+                    messageTextView.setText(R.string.tip);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
 
             }
+
         });
 
-
-
     }
-
-
-
-
-
 
 }
